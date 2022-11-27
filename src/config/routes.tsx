@@ -7,12 +7,12 @@ import { Thr } from "../components/welcome/thr";
 import { Welcome as welcome } from "../views/Welcome";
 
 export const routes: RouteRecordRaw[] = [
-    { path: '/', component: First },
-    { path: '/about', component: First }, 
+    { path: '/', redirect: '/welcome' },
     {
         path: '/welcome',
         component:welcome,
         children: [
+            { path: '', redirect: 'welcome/1', },
             { path: '1', component: First, },
             { path: '2', component: Sec, },
             { path: '3', component: Thr, },
