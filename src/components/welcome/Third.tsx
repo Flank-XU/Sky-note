@@ -1,23 +1,26 @@
-import { defineComponent } from 'vue';
-import style from "./First.module.scss";
-import savepig from "../../assets/icons/cloud.svg";
-import { RouterLink } from 'vue-router';
 
-export const Third = defineComponent({
-    setup: (props, context) => {
-        return () => <>
-            <div class={style.wrapper}>
-                <div class={style.card}>
-                    <img src={savepig} />
-                    <h2>学会记账<br/>还要会省钱</h2>
-                </div>
-                <div class={style.action}>
+import savepig from "../../assets/icons/cloud.svg";
+import style from "./WelcomeLayout.module.scss";
+import { RouterLink } from 'vue-router';
+import { WelcomeLayout } from './WelcomeLayout';
+import { FunctionalComponent } from "vue";
+
+export const Third: FunctionalComponent = () => {
+    return <WelcomeLayout>
+        {
+            {
+                icon: () => <img src={savepig} />,
+
+                title: () => <h2>会挣钱<br />还要会省钱</h2>,
+                buttons: () => <>
                     <RouterLink class={style.ffff} to="/start">跳过</RouterLink>
                     <RouterLink to="/Welcome/4">下一页</RouterLink>
                     <RouterLink to="/start">跳过</RouterLink>
-                    </div>
-            </div>
-        </>
+                </>
+            }
+        }
+    </WelcomeLayout>
+}
+Third.displayName = 'Third'
 
-    }
-})
+
