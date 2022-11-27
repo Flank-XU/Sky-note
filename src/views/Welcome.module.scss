@@ -1,30 +1,38 @@
-.wrapper{
+.wrapper {
     color: red;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    
-    > header {
+    align-items: center;
+    background-image: linear-gradient(to bottom, #3f5efb 0%, #fc466b 100%);
+
+    >header {
+        padding-top: 5vh;
         display: flex;
-        background-color: pink;
         flex-shrink: 0;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        > img{
+        color: white;
+
+        >img {
             height: 10vh;
             width: 10vh;
         }
-        &:hover{
+
+        &:hover {
             background-color: aqua;
         }
     }
-    > main{
+
+    >main {
+        display: flex;
         flex-grow: 1;
-        background-color: #bfc;
+        flex-direction: column;
 
     }
-    >footer{
+
+    >footer {
         flex-shrink: 0;
     }
 }

@@ -7,8 +7,7 @@ export const Welcome = defineComponent({
         return () => <div class={style.wrapper}>
             <header><img src={logo} />
                 <h1>比鲁记账本</h1></header>
-            <main><RouterView /></main>
-            <footer>buttons</footer>
+            <main class={style.main}><RouterView /></main>
         </div>
     }
 })
