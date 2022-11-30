@@ -1,11 +1,6 @@
 import { defineComponent, PropType } from 'vue';
 import { Navbar } from '../shared/Navbar';
 export const MainLayout = defineComponent({
-    props: {
-        name: {
-            type: String as PropType<string>
-        }
-    },
     setup: (props, context) => {
         return () => (
             <div>
