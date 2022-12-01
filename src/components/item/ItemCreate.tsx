@@ -20,10 +20,10 @@ export const ItemCreate = defineComponent({
                     {/* <Tabs selected={refKind.value} onUpdateSelected={onUpdateSelected}> */}
                     <Tabs v-model:selected={refKind.value}>
                         <Tab name="支出">
-                            icon 列表
+                            列表111111
                         </Tab>
                         <Tab name="收入">
-                            icon 列表2
+                            列表222222
                         </Tab>
                     </Tabs>
                 </>
