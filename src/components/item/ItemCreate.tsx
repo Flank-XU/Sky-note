@@ -11,16 +11,18 @@ export const ItemCreate = defineComponent({
     },
     setup: (props, context) => {
         const refKind = ref('支出')
+        const onUpdateSelected = (name: string) => refKind.value = name
         return () => (
             <MainLayout>{{
                 title: () => '记帐',
                 icon: () => <Icon name="chart" class={s.navIcon} />,
                 default: () => <>
-                    <Tabs selected={refKind.value} onUpdateSelected = {name=>refKind.value = name}>
-                        <Tab name='支出'>
+                    {/* <Tabs selected={refKind.value} onUpdateSelected={onUpdateSelected}> */}
+                    <Tabs v-model:selected={refKind.value}>
+                        <Tab name="支出">
                             icon 列表
                         </Tab>
-                        <Tab name='收入'>
+                        <Tab name="收入">
                             icon 列表2
                         </Tab>
                     </Tabs>
