@@ -25,7 +25,6 @@ export const Tabs = defineComponent({
 						>
 							{item.props?.name}
 						</li>)}
-
 				</ol>
 				<div>
 					{tabs.find(item =>console.log( item.props?.name === props.selected))}
