@@ -28,7 +28,6 @@ export const Tabs = defineComponent({
 				</ol>
 				<div>
 					{tabs.find(item =>console.log( item.props?.name === props.selected))}
-					撒达娃强大祈福祈福
 					{tabs.find(item => item.props?.name === props.selected)}
 				</div>
 			</div>
