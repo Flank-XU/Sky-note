@@ -28,7 +28,6 @@ export const Tabs = defineComponent({
 				</ol>
 				<div>
 					12355
-					{tabs.find(item => console.log(item.props?.name === props.selected))}
 					{tabs.find(item => item.props?.name === props.selected)}
 				</div>
 			</div>
