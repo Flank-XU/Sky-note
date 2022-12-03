@@ -1,6 +1,5 @@
 import { defineComponent, PropType, ref } from 'vue';
 import { Icon } from '../../shared/Icon';
-import { time } from '../../shared/time';
 import s from './InputPad.module.scss';
 import { DatePicker, Popup } from 'vant';
 
