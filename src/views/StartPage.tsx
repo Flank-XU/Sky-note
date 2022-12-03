@@ -20,7 +20,7 @@ export const StartPage = defineComponent({
           icon: () => <Icon name="menu" class={s.navIcon} onClick={onClickMenu} />,
           default: () => <>
             <Center class={s.pig_wrapper}>
-              <Icon name='savepig' class={s.pig} />
+              <Icon name="savepig" class={s.pig} />
             </Center>
             <div class={s.button_wrapper}>
               <RouterLink to="/items/create">

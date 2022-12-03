@@ -27,7 +27,8 @@ export const Tabs = defineComponent({
 						</li>)}
 				</ol>
 				<div>
-					{tabs.find(item =>console.log( item.props?.name === props.selected))}
+					12355
+					{tabs.find(item => console.log(item.props?.name === props.selected))}
 					{tabs.find(item => item.props?.name === props.selected)}
 				</div>
 			</div>
