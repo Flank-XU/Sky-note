@@ -9,6 +9,7 @@ import styleImport,{VantResolve} from 'vite-plugin-style-import'
 export default defineConfig({
   plugins: [
     vue(),
+    svgstore(),
     vueJsx({
       // options are passed on to @vue/babel-plugin-jsx
       transformOn: true,
@@ -17,7 +18,6 @@ export default defineConfig({
     styleImport({
       resolves:[VantResolve()]
     }),
-    svgstore(),
   ]
 })
 

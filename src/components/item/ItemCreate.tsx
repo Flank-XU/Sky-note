@@ -16,7 +16,7 @@ export const ItemCreate = defineComponent({
 		return () => (
 			<MainLayout>{{
 				title: () => '记帐',
-				icon: () => <Icon name="chart" class={s.navIcon} />,
+				icon: () => <Icon name="left" class={s.navIcon} />,
 				default: () => <>
 					{/* <Tabs selected={refKind.value} onUpdateSelected={onUpdateSelected}> */}
 					<Tabs v-model:selected={refKind.value}>
