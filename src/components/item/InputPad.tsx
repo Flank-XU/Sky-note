@@ -58,11 +58,13 @@ export const InputPad = defineComponent({
     const hideDatePicker = () => refDatePickerVisible.value = false
     const setDate = (date: Date) => { refDate.value = date; hideDatePicker() }
     const refAmount = ref('0')
+    const columnsType = ['year', 'month'];
     return () => <>
       <div class={s.dateAndAmount}>
         <span class={s.date}>
           <Icon name="menu" class={s.icon} />
           <span>
+<<<<<<< HEAD
             <span onClick={showDatePicker}>{time(refDate.value).format()}</span>
             <Popup position='bottom' v-model:show={refDatePickerVisible.value}>
               <DatetimePicker calss={s.inpyt}
@@ -70,6 +72,17 @@ export const InputPad = defineComponent({
                 type="date" title="选择年月日"
                 onConfirm={setDate}
                 onCancel={hideDatePicker}
+=======
+            <span onClick={showDatePicker}>
+              1023
+            </span>
+            <Popup position="bottom" v-model:show={refDatePickerVisible.value}>
+              <DatePicker
+                title="选择年月"
+                //https://vant-contrib.gitee.io/vant/#/zh-CN/date-picker
+                onConfirm={setDate} onCancel={hideDatePicker}
+
+>>>>>>> 800b824d9149107f6583ec92a06bcb85d20ca369
               />
             </Popup>
           </span>
