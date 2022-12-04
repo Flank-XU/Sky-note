@@ -5,6 +5,10 @@ export const Tabs = defineComponent({
 		selected: {
 			type: String as PropType<string>,
 			required: false,
+		},
+		onUpdateSelected: {
+			type: Function as PropType<(name: string) => void>,
+			required: false,
 		}
 	},
 	setup: (props, context) => {
