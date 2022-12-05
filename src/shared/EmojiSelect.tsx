@@ -14,8 +14,11 @@ export const EmojiSelect = defineComponent({
         'face-neutral-skeptical', 'face-sleepy', 'face-unwell', 'face-hat',
         'face-glasses', 'face-concerned', 'face-negative', 'face-costume'
       ]],
-      ['手势', ['hand-fingers-open', 'hand-fingers-partial', 'hand-single-finger',
-        'hand-fingers-closed', 'hands', 'hand-prop', 'body-parts']],
+      ['食物', [
+        'food-fruit', 'food-vegetable', 'food-prepared', 'food-asian',
+        'food-marine', 'food-sweet'
+      ]],
+      ['运动', ['sport', 'game']],
       ['人物', ['person', 'person-gesture', 'person-role', 'person-fantasy',
         'person-activity', 'person-sport', 'person-resting']],
       ['衣服', ['clothing']],
@@ -23,11 +26,8 @@ export const EmojiSelect = defineComponent({
         'animal-amphibian', 'animal-reptile', 'animal-marine', 'animal-bug']],
       ['植物', ['plant-flower', 'plant-other']],
       ['自然', ['sky & weather', 'science']],
-      ['食物', [
-        'food-fruit', 'food-vegetable', 'food-prepared', 'food-asian',
-        'food-marine', 'food-sweet'
-      ]],
-      ['运动', ['sport', 'game']],
+      ['手势', ['hand-fingers-open', 'hand-fingers-partial', 'hand-single-finger',
+        'hand-fingers-closed', 'hands', 'hand-prop', 'body-parts']],
     ]
     const onClickTab = (index: number) => {
       refSelected.value = index
@@ -47,7 +47,7 @@ export const EmojiSelect = defineComponent({
     })
     return () => (
       <div class={s.emojiList}>
-        <nav>
+        <nav >
           {table.map((item, index) =>
             <span class={index === refSelected.value ? s.selected : ''}
               onClick={() => onClickTab(index)}>{item[0]}</span>)}
