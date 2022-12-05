@@ -36,7 +36,7 @@ export const FormItem = defineComponent({
         case 'text':
           return <input
             value={props.modelValue}
-            onInput={(e: any) => context.emit('upadte:modeValue'e.target.value)}
+            onInput={(e: any) => context.emit('upadte:modeValue',e.target.value)}
             class={[s.formItem, s.input, s.error]} />
         case 'enojiSelect':
           return <EmojiSelect
