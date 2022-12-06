@@ -3,8 +3,8 @@ import s from './Tabs.module.scss';
 export const Tabs = defineComponent({
 	props: {
 		classPrefix: {
-      type: String
-    },
+			type: String
+		},
 		selected: {
 			type: String as PropType<string>,
 			required: false,
@@ -14,6 +14,7 @@ export const Tabs = defineComponent({
 			required: false,
 		}
 	},
+	emits: ['update:selected'],
 	setup: (props, context) => {
 		return () => {
 			const tabs = context.slots.default?.()
