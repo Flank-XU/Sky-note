@@ -1,5 +1,6 @@
 import { Popup, DatetimePicker } from 'vant';
 import { computed, defineComponent, PropType, ref } from 'vue';
+import { Button } from './Button';
 import { EmojiSelect } from './EmojiSelect';
 import s from './Form.module.scss';
 import { Time } from './time';
@@ -26,7 +27,7 @@ export const FormItem = defineComponent({
       type: [String, Number]
     },
     type: {
-      type: String as PropType<'text' | "enojiSelect" | 'date'>
+      type: String as PropType<'text' | "enojiSelect" | 'date' | 'validationCode'>
     },
     error: {
       type: String
@@ -47,6 +48,12 @@ export const FormItem = defineComponent({
             modelValue={props.modelValue?.toString()}
             onUpdateModelValue={value => context.emit('update:modelValue', value)}
             class={[s.formItem, s.emojiList, s.error]} />
+        case "validationCode":
+          return <>
+            <input class={[s.formItem, s.input, s.validationCodeInput]} />
+            <Button class={[s.formItem, s.button, s.validationCodeButton]}>发送验证码</Button>
+          </>
+
         case "date":
           return <>
             <input readonly={true} value={props.modelValue}
@@ -75,10 +82,9 @@ export const FormItem = defineComponent({
           <div class={s.formItem_value}>
             {content.value}
           </div>
-          {props.error &&
-            <div class={s.formItem_errorHint}>
-              <span>{props.error}</span>
-            </div>}
+          <div class={s.formItem_errorHint}>
+            <span>{props.error ?? "　"}</span>
+          </div>
         </label>
       </div>
 
