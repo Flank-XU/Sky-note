@@ -1,0 +1,18 @@
+.wrapper {}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+padding: 5vh 0;
+  .icon {
+    width: 10vh;
+    height: 10vh;
+  }
+
+  .appname {
+    color: blueviolet;
+    font-weight: bolder;
+  }
+}
