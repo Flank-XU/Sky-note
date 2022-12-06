@@ -8,6 +8,7 @@ import s from './ItemList.module.scss';
 import { ItemSummary } from './ItemSummary';
 import { FormItem } from '../../shared/Form';
 import { defineComponent, reactive, ref, watchEffect } from 'vue';
+import { OverlayIcon } from '../../shared/Overlay';
 export const ItemList = defineComponent({
 
   setup: (props, context) => {
@@ -46,7 +47,7 @@ export const ItemList = defineComponent({
       <MainLayout>{
         {
           title: () => '比录记账本',
-          icon: () => <Icon name="menu" />,
+          icon: () => <OverlayIcon />,
           default: () => <>
             <Tabs classPrefix={'customTabs'} v-model:selected={refSelected.value}
               onUpdate:selected={onSelect}>
