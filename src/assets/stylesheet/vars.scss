@@ -27,17 +27,12 @@
   --navbar-bg-start: var(--welcome-bg-start);
   --navbar-text: white;
   --overlay-bg: white;
-  --overlay-bg: white;
-  --overlay-mask-bg: rgba(0, 0, 0, 0.5);
   --overlay-mask-bg: rgba(0, 0, 0, 0.5);
   --overlay-user-bg: #5c33be;
-  --overlay-user-bg: #5C33BE;
-  --overlay-user-text: white;
   --overlay-user-text: white;
   --tabs-indicator-bg: rgba(255, 255, 255, 0.5);
   --tabs-indicator-bg: rgba(255, 255, 255, 0.5);
   --tag-bg: #EFEFEF;
-  --top-safe-area-height: 24px;
   --top-safe-area-height: 24px;
   --total-bg: #252A43;
   --total-expenses: #53A867;
@@ -53,4 +48,5 @@
   --z-index-bottom-nav: 10;
   --z-index-overlay: 16;
   --z-index-navbar: 32;
+  --vans-overlay-z-index: 64;
 }

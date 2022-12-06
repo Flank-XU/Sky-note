@@ -5,11 +5,12 @@
   justify-content: center;
   align-items: center;
   border: 1px solid red;
+  z-index: var(--vans-overlay-z-index);
   background: var(--overlay-mask-bg);
-
   &_inner {
     background: var(--bg);
     width: 80vw;
+    
 
     >header {
       background: var(--main);

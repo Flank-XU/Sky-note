@@ -14,7 +14,7 @@
 
 .formItem {
   min-height: var(--input-min-height);
-  max-width: 90%;
+  max-width: 96%;
 
   &.button {
     width: 100%;
@@ -24,10 +24,7 @@
     font-weight: bolder;
 
   }
-  &_value{
-    padding-left: 12px;
-  }
-
+  
   &.input {
     flex-grow: 1;
     border: 1px solid var(--input-border-color);
@@ -36,19 +33,17 @@
     font-family: inherit;
     padding-left: 16px;
     padding-right: 16px;
+
     box-shadow: inset 0 0 3px var(--input-shadow);
 
     &.error {
       border-color: var(--error-color);
     }
   }
-
-  &_name {}
-
   &_value {
     display: flex;
     margin-top: 4px;
-
+    padding:0 5vw;
     >* {
       flex-grow: 1;
     }
