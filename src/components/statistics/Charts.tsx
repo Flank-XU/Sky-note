@@ -2,6 +2,7 @@ import { defineComponent, PropType, ref } from 'vue';
 import { FormItem } from '../../shared/Form';
 import s from './Charts.module.scss';
 import { LineChart } from './LineChart';
+import { PieChart } from './PieChart';
 export const Charts = defineComponent({
   props: {
     startDate: {
@@ -22,6 +23,7 @@ export const Charts = defineComponent({
           { value: 'income', text: '收入' }
         ]} v-model={category.value} />
        <LineChart />
+       <PieChart />
       </div>
 
     )
