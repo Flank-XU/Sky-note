@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { defineComponent, PropType, reactive } from 'vue';
 import { MainLayout } from '../layout/MainLayout';
 import { Button } from '../shared/Button';
@@ -27,6 +28,11 @@ export const SignInPage = defineComponent({
         { key: 'email', type: 'pattern', regex: /.@.+/, message: '必填是邮箱地址' },
         { key: 'code', type: 'required', message: '必填' },
       ]))
+
+    }
+    const onClickSendValidationCode = async () => {
+      const response = await axios.post('/api/v1/validation_codes', { email: formData.email })
+      console.log(response)
     }
     return () => (
       <MainLayout>{
@@ -45,6 +51,7 @@ export const SignInPage = defineComponent({
                   v-model={formData.email} error={errors.email?.[0]} />
                 <FormItem label='验证码' type='validationCode'
                   placeholder='请输入六位数字'
+                  onClick={onClickSendValidationCode}
                   v-model={formData.code} error={errors.code?.[0]} />
                 <FormItem style={{ paddingTop: '8vh' }}>
                   <Button>登录</Button>
