@@ -26,7 +26,10 @@ export class Http {
     config?: Omit<AxiosRequestConfig,
       'url' | 'data' | 'method'>) {
     return this.instance.request<R>({
-      ...config, url, data, method: 'post'
+      ...config,
+      url,
+      data,
+      method: 'post'
     })
   }
   // update
@@ -35,7 +38,9 @@ export class Http {
     config?: Omit<AxiosRequestConfig,
       'url' | 'data'>) {
     return this.instance.request<R>({
-      ...config, url, data,
+      ...config,
+      url,
+      data,
       method: 'patch'
     })
   }
@@ -62,7 +67,7 @@ http.instance.interceptors.response.use(response => {
   if (error.response) {
     const axiosError = error as AxiosError
     if (axiosError.response?.status === 429) {
-      alert('你太频繁了')
+      alert('请求过于频繁')
     }
   }
   throw error
