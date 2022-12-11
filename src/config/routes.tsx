@@ -39,13 +39,7 @@ export const routes: RouteRecordRaw[] = [
   { path: '/start', component: StartPage },
   {
     path: '/items', component: ItemPage,
-    //添加路由守卫  没有登录不可以进行记账和其他操作
-    beforeEnter: async (to, from, next) => {
-      await http.get('/me').catch(() => {
-        next('/sign_in?return_to=' + to.path)
-      })
-      next()
-    },
+
     children: [
       { path: '', component: ItemList },
       { path: 'create', component: ItemCreate },

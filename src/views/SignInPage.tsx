@@ -8,6 +8,7 @@ import { Form, FormItem } from '../shared/Form';
 import { history } from '../shared/history';
 import { http } from '../shared/Http';
 import { Icon } from '../shared/Icon';
+import { refershMe } from '../shared/me';
 import { hasError, validate } from '../shared/validate';
 import s from './SignInPage.module.scss';
 export const SignInPage = defineComponent({
@@ -43,6 +44,7 @@ export const SignInPage = defineComponent({
         // router.push('/sign_in?return_to=' + encodeURLComponent(route.fullPath)
         // cosnt returnTo= route.queryy.return_to?.toString()
         const returnTo = localStorage.getItem('returnTo')
+        refershMe()
         router.push(returnTo || '/')
 
       }
