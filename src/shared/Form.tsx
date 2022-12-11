@@ -75,6 +75,8 @@ export const FormItem = defineComponent({
         case "validationCode":
           return <>
             <input
+              value={props.modelValue}
+              onInput={(e: any) => context.emit("update:modelValue", e.target.value)}
               placeholder={props.placeholder}
               class={[s.formItem, s.input, s.validationCodeInput]} />
             <Button
@@ -82,7 +84,6 @@ export const FormItem = defineComponent({
               onClick={props.onClick}
               class={[s.formItem, s.button, s.validationCodeButton]}>{isCounting.value ? `${count.value}秒后重新发送` : '发送验证码'}</Button>
           </>
-
         case "date":
           return <>
             <input
@@ -108,7 +109,6 @@ export const FormItem = defineComponent({
         case undefined:
           return context.slots.default?.()
       }
-
     })
     return () => {
       return <div class={s.formRow}>
@@ -125,11 +125,6 @@ export const FormItem = defineComponent({
           </div>
         </label>
       </div>
-
-
-
-
     }
-
   }
 })

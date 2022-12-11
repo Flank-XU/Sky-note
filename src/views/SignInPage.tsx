@@ -6,7 +6,7 @@ import { Button } from '../shared/Button';
 import { Form, FormItem } from '../shared/Form';
 import { http } from '../shared/Http';
 import { Icon } from '../shared/Icon';
-import { validate } from '../shared/validate';
+import { hasError, validate } from '../shared/validate';
 import s from './SignInPage.module.scss';
 export const SignInPage = defineComponent({
 
@@ -22,7 +22,7 @@ export const SignInPage = defineComponent({
     const refValidationCode = ref<any>()
     const { ref: refDisabled, toggle, on: disabled, off: enable
     } = useBool(false)
-    const onSubmit = (e: Event) => {
+    const onSubmit = async (e: Event) => {
       e.preventDefault()
       Object.assign(errors, {
         email: [],
@@ -33,6 +33,9 @@ export const SignInPage = defineComponent({
         { key: 'email', type: 'pattern', regex: /.@.+/, message: '必填是邮箱地址' },
         { key: 'code', type: 'required', message: '必填' },
       ]))
+      if (!hasError(errors)) {
+        const response = await http.post('/session', formData)
+      }
 
     }
     const onError = (error: any) => {
@@ -71,7 +74,7 @@ export const SignInPage = defineComponent({
                   onClick={onClickSendValidationCode}
                   v-model={formData.code} error={errors.code?.[0]} />
                 <FormItem style={{ paddingTop: '8vh' }}>
-                  <Button>登录</Button>
+                  <Button type='submit'>登录</Button>
                 </FormItem>
               </Form>
             </div>
