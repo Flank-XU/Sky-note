@@ -11,6 +11,7 @@ import { Second } from "../components/welcome/Second";
 import { SecondActions } from "../components/welcome/SecondActions";
 import { Third } from "../components/welcome/Third";
 import { ThirdActions } from "../components/welcome/ThirdActions";
+import { http } from "../shared/Http";
 import { ItemPage } from "../views/ItemPage";
 import { SignInPage } from "../views/SignInPage";
 import { StartPage } from "../views/StartPage";
@@ -23,6 +24,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/welcome',
     component: Welcome,
+    //添加路由守卫，点击跳过不在出现广告
     beforeEnter: (to, from, next) => {
       localStorage.getItem('skipFeatures') === 'yes' ? next('/start') : next()
     },
@@ -37,6 +39,13 @@ export const routes: RouteRecordRaw[] = [
   { path: '/start', component: StartPage },
   {
     path: '/items', component: ItemPage,
+    //添加路由守卫  没有登录不可以进行记账和其他操作
+    beforeEnter: async (to, from, next) => {
+      await http.get('/me').catch(() => {
+        next('/sign_in?return_to=' + to.path)
+      })
+      next()
+    },
     children: [
       { path: '', component: ItemList },
       { path: 'create', component: ItemCreate },
