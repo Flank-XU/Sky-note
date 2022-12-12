@@ -39,9 +39,8 @@ export const SignInPage = defineComponent({
         { key: 'code', type: 'required', message: '必填' },
       ]))
       if (!hasError(errors)) {
-        const response = await http.post<{ jwt: string }>('/session', formData, { params: { _mock: "session" } })
+        const response = await http.post<{ jwt: string }>('/session', formData)
           .catch(onError)
-        console.log(response)
         localStorage.setItem("jwt", response.data.jwt)
         // router.push('/sign_in?return_to=' + encodeURLComponent(route.fullPath)
         // cosnt returnTo= route.queryy.return_to?.toString()
