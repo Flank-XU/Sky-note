@@ -34,7 +34,8 @@ export const Tabs = defineComponent({
 				</ol>
 				<div>
 					{tabs.map(item =>
-						<div v-show={item.props?.name === props.selected ? "block" : 'none'}>{item}</div>)}
+						<div v-show={item.props?.name === props.selected}>{item}</div>
+					)}
 				</div>
 			</div>
 		}
@@ -50,7 +51,7 @@ export const Tab = defineComponent({
 	setup: (props, context) => {
 		return () => (
 			<div>
-				1231414{context.slots.deault?.()}</div>
+				{context.slots.deault?.()}</div>
 		)
 	}
 })
