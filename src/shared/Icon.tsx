@@ -1,9 +1,19 @@
-import { defineComponent, defineProps, PropType } from 'vue';
-import s from './Icon.module.scss';
+import { defineComponent, defineProps, PropType } from "vue";
+import s from "./Icon.module.scss";
 
 export type IconName =
-  'add' | 'chart' | 'notes' | 'cloud' | 'icon' | 'savepig'
-  | 'charts' | 'export' | 'menus' | 'menu' | "notify" | "left"
+  | "add"
+  | "chart"
+  | "notes"
+  | "cloud"
+  | "icon"
+  | "savepig"
+  | "charts"
+  | "export"
+  | "menus"
+  | "menu"
+  | "notify"
+  | "left";
 
 export const Icon = defineComponent({
   props: {
@@ -12,15 +22,14 @@ export const Icon = defineComponent({
       required: true,
     },
     onClick: {
-      type: Function as PropType<(e: MouseEvent) => void>
-    }
+      type: Function as PropType<(e: MouseEvent) => void>,
+    },
   },
   setup: (props, context) => {
     return () => (
       <svg class={s.icon} onClick={props.onClick}>
-        <use xlinkHref={'#' + props.name}></use>
+        <use xlinkHref={"#" + props.name}></use>
       </svg>
-    )
-  }
-})
-
+    );
+  },
+});
