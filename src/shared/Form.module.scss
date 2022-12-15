@@ -1,23 +1,25 @@
 .form {
-  padding: 16px;
+  padding: 10px;
 }
 
 .formRow {
+
   margin-top: 8px;
+
 }
 
 .formLabel {
   display: block;
-
-  
+  padding-left: 0px;
 }
 
 .formItem {
   min-height: var(--input-min-height);
-  max-width: 96%;
+  max-width: 100%;
 
   &.button {
     width: 100%;
+
   }
   &_name {
     padding-left: 16px;
@@ -31,7 +33,7 @@
     border-radius: var(--input-radius);
     font-size: 18px;
     font-family: inherit;
-    padding-left: 16px;
+    padding-left: 10px;
     padding-right: 16px;
 
     box-shadow: inset 0 0 3px var(--input-shadow);
@@ -55,15 +57,18 @@
   &_value {
     display: flex;
     margin-top: 4px;
-    padding:0 5vw;
+    padding:0 12px;
     >* {
       flex-grow: 1;
     }
   }
 
   &_errorHint {
+    margin-left: 12px;
     margin-top: 4px;
     color: var(--error-color);
     font-size: 12px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }

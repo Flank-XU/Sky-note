@@ -5,6 +5,7 @@
   font-size: 18px;
   font-size: 14px;
   &.error {
+    padding-left: 20px;
     border-color: var(--error-color);
   }
   overflow: hidden;
