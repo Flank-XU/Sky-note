@@ -14,11 +14,11 @@ export const ItemSummary = defineComponent({
   props: {
     startDate: {
       type: String as PropType<string>,
-      required: true,
+      required: false,
     },
     endDate: {
       type: String as PropType<string>,
-      required: true,
+      required: false,
     },
   },
   setup: (props, context) => {
@@ -42,46 +42,6 @@ export const ItemSummary = defineComponent({
       page.value += 1;
     };
     onMounted(fetchItems);
-
-    watch(
-      () => [props.startDate, props.endDate],
-      () => {
-        items.value = [];
-        hasMore.value = false;
-        page.value = 0;
-        fetchItems();
-      }
-    );
-
-    const itemsBalance = reactive({
-      expenses: 0,
-      income: 0,
-      balance: 0,
-    });
-    const fetchItemsBalance = async () => {
-      if (!props.startDate || !props.endDate) {
-        return;
-      }
-      const response = await http.get("/items/balance", {
-        happen_after: props.startDate,
-        happen_before: props.endDate,
-        page: page.value + 1,
-        _mock: "itemIndexBalance",
-      });
-      Object.assign(itemsBalance, response.data);
-    };
-    onMounted(fetchItemsBalance);
-    watch(
-      () => [props.startDate, props.endDate],
-      () => {
-        Object.assign(itemsBalance, {
-          expenses: 0,
-          income: 0,
-          balance: 0,
-        });
-        fetchItemsBalance();
-      }
-    );
     return () => (
       <div class={s.wrapper}>
         {items.value ? (
@@ -109,7 +69,9 @@ export const ItemSummary = defineComponent({
                   <div class={s.text}>
                     <div class={s.tagAndAmount}>
                       <span class={s.tag}>{item.tags_id[0]}</span>
-                      <span class={s.amount}>￥<>{item.amount}</></span>
+                      <span class={s.amount}>
+                        ￥<>{item.amount}</>
+                      </span>
                     </div>
                     <div class={s.time}>{item.happen_at}</div>
                   </div>
@@ -117,10 +79,11 @@ export const ItemSummary = defineComponent({
               ))}
             </ol>
             <div class={s.more}>
-              {hasMore.value ?
-                <Button onClick={fetchItems}>加载更多</Button> :
+              {hasMore.value ? (
+                <Button onClick={fetchItems}>加载更多</Button>
+              ) : (
                 <span>没有更多</span>
-              }
+              )}
             </div>
           </>
         ) : (
