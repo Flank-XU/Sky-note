@@ -48,7 +48,6 @@ export const TagForm = defineComponent({
         await promise.catch((error) =>
           onFormError(error, (data) => Object.assign(errors, data.errors))
         );
-        console.log(formData);
         router.back();
       }
     };
