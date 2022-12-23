@@ -35,7 +35,10 @@ type Item = {
 type Resource<T> = {
   resource: T
 }
-
+type User = {
+  id: number,
+  email: string
+}
 type ResourceError = {
   errors: Record<string, string[]>
 }
