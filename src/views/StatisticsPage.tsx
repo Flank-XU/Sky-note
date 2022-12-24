@@ -3,6 +3,12 @@ import { Charts } from "../components/statistics/Charts";
 import { TimeTabsLayout } from "../layout/TimeTabsLayout";
 export const StatisticsPage = defineComponent({
   setup: (props, context) => {
-    return () => <TimeTabsLayout rerenderOnSwitchTab={true} component={Charts} />;
+    return () => (
+      <TimeTabsLayout
+        rerenderOnSwitchTab={true}
+        component={Charts}
+        hideThisYear={true}
+      />
+    );
   },
 });
