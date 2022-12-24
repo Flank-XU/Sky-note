@@ -62,6 +62,8 @@ export const Charts = defineComponent({
           happen_before: props.endDate,
           kind: kind.value,
           group_by: "happen_at",
+        },
+        {
           _mock: "itemSummary",
         }
       );
@@ -87,6 +89,8 @@ export const Charts = defineComponent({
           happen_before: props.endDate,
           kind: kind.value,
           group_by: "tag_id",
+        },
+        {
           _mock: "itemSummary",
         }
       );
@@ -94,7 +98,7 @@ export const Charts = defineComponent({
     };
     onMounted(fetchData2);
     watch(() => kind.value, fetchData2);
-    
+
     //data3 barchart
     const betterData3 = computed<
       { tag: Tag; amount: number; percent: number }[]

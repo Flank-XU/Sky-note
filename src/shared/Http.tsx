@@ -4,6 +4,7 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
+import { Toast } from "vant";
 import {
   mockItemCreate,
   mockItemIndex,
@@ -111,9 +112,27 @@ http.instance.interceptors.request.use((config) => {
   if (jwt) {
     config.headers!.Authorization = `Bearer ${jwt}`;
   }
+  if(config._autoLoading === true){
+    Toast.loading({
+      message: '加载中...',
+      forbidClick: true,
+      duration: 0
+    });
+  }
   return config;
 });
-
+//设置加载拦截器
+http.instance.interceptors.response.use((response)=>{
+  if(response.config._autoLoading === true){
+    Toast.clear();
+  }
+  return response
+}, (error: AxiosError)=>{
+  if(error.response?.config._autoLoading === true){
+    Toast.clear();
+  }
+  throw error
+})
 http.instance.interceptors.response.use(
   (response) => {
     mock(response);
