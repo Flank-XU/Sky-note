@@ -52,7 +52,7 @@ export const SignInPage = defineComponent({
       );
       if (!hasError(errors)) {
         const response = await http
-          .post<{ jwt: string }>("/session", formData)
+          .post<{ jwt: string }>("/session", formData, {_autoLoading: true})
           .catch(onError);
         localStorage.setItem("jwt", response.data.jwt);
         // router.push('/sign_in?return_to=' + encodeURLComponent(route.fullPath)

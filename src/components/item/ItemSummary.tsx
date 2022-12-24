@@ -40,6 +40,7 @@ export const ItemSummary = defineComponent({
         },
         {
           _mock: "itemIndex",
+          _autoLoading: true,
         }
       );
       const { resources, pager } = response.data;
