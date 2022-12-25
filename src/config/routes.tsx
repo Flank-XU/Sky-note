@@ -13,7 +13,6 @@ import { Third } from "../components/welcome/Third";
 import { ThirdActions } from "../components/welcome/ThirdActions";
 import { ItemPage } from "../views/ItemPage";
 import { SignInPage } from "../views/SignInPage";
-import { StartPage } from "../views/StartPage";
 import { StatisticsPage } from "../views/StatisticsPage";
 import { TagPage } from "../views/TagPage";
 import { Welcome } from "../views/Welcome";
@@ -25,7 +24,7 @@ export const routes: RouteRecordRaw[] = [
     component: Welcome,
     //添加路由守卫，点击跳过不在出现广告
     beforeEnter: (to, from, next) => {
-      localStorage.getItem("skipFeatures") === "yes" ? next("/start") : next();
+      localStorage.getItem("skipFeatures") === "yes" ? next("/items") : next();
     },
     children: [
       { path: "", redirect: "/welcome/1" },
@@ -51,7 +50,7 @@ export const routes: RouteRecordRaw[] = [
       },
     ],
   },
-  { path: "/start", component: StartPage },
+  
   {
     path: "/items",
     component: ItemPage,

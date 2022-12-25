@@ -17,7 +17,7 @@ export const Welcome = defineComponent({
       Welcome1: "/welcome/2",
       Welcome2: "/welcome/3",
       Welcome3: "/welcome/4",
-      Welcome4: "/start",
+      Welcome4: "/items",
     };
     const { swiping, direction } = useSwipe(main, {
       beforeStart: (e) => e.preventDefault(),

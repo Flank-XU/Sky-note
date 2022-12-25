@@ -4,7 +4,7 @@ import { SkipFeatures } from "../../shared/SkipFeatures";
 export const ForthActions = () => (
   <div class={s.actions}>
     <SkipFeatures class={s.fake} />
-    <RouterLink to="/start">完成</RouterLink>
+    <RouterLink to="/items">完成</RouterLink>
     <SkipFeatures />
   </div>
 );
