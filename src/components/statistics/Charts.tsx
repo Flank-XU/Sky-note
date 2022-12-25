@@ -69,7 +69,6 @@ export const Charts = defineComponent({
         }
       );
       data1.value = response.data.groups;
-      console.log(data1.value);
     };
     onMounted(fetchData1);
     watch(() => kind.value, fetchData1);

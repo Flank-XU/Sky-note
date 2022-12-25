@@ -19,7 +19,6 @@ export const useSwipe = (
   const start = ref<Point>();
   const end = ref<Point>();
   const swiping = ref(false);
-  console.log(start.value, end.value);
   const distance = computed(() => {
     if (!start.value || !end.value) {
       return null;
