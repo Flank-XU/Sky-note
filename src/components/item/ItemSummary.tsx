@@ -52,8 +52,8 @@ export const ItemSummary = defineComponent({
         (pager.page - 1) * pager.per_page + resources.length < pager.count;
       page.value += 1;
     };
-
     onMounted(fetchItems);
+
     watch(
       () => [props.startDate, props.endDate],
       () => {
@@ -63,6 +63,7 @@ export const ItemSummary = defineComponent({
         fetchItems();
       }
     );
+
     const itemsBalance = reactive({
       expenses: 0,
       income: 0,
@@ -79,7 +80,9 @@ export const ItemSummary = defineComponent({
           happen_before: props.endDate,
           page: page.value + 1,
         },
-        { _mock: "itemIndexBalance" }
+        {
+          _mock: "itemIndexBalance",
+        }
       );
       Object.assign(itemsBalance, response.data);
     };
@@ -97,7 +100,7 @@ export const ItemSummary = defineComponent({
     );
     return () => (
       <div class={s.wrapper}>
-        {(items.value && items.value.length > 0) ? (
+        {items.value && items.value.length > 0 ? (
           <>
             <ul class={s.total}>
               <li>
@@ -106,22 +109,30 @@ export const ItemSummary = defineComponent({
               </li>
               <li>
                 <span>支出</span>
-                <Money value={itemsBalance.income} />
+                <Money value={itemsBalance.expenses} />
               </li>
               <li>
                 <span>净收入</span>
-                <Money value={itemsBalance.income} />
+                <Money value={itemsBalance.balance} />
               </li>
             </ul>
             <ol class={s.list}>
               {items.value.map((item) => (
                 <li>
                   <div class={s.sign}>
-                    <span>{item.tags![0].sign}</span>
+                    <span>
+                      {item.tags && item.tags.length > 0
+                        ? item.tags[0].sign
+                        : "💰"}
+                    </span>
                   </div>
                   <div class={s.text}>
                     <div class={s.tagAndAmount}>
-                      <span class={s.tag}>{item.tags![0].name}</span>
+                      <span class={s.tag}>
+                        {item.tags && item.tags.length > 0
+                          ? item.tags[0].name
+                          : "未分类"}
+                      </span>
                       <span class={s.amount}>
                         ￥<Money value={item.amount} />
                       </span>
@@ -143,18 +154,18 @@ export const ItemSummary = defineComponent({
           </>
         ) : (
           <>
-          <Center class={s.pig_wrapper}>
-            <Icon name="savepig" class={s.pig} />
-          </Center>
-          <div class={s.button_wrapper}>
-            <RouterLink to="/items/create">
-              <Button class={s.button}>开始记账</Button>
-            </RouterLink>
-          </div>
-        </>
+            <Center class={s.pig_wrapper}>
+              <Icon name="savepig" class={s.pig} />
+            </Center>
+            <div class={s.button_wrapper}>
+              <RouterLink to="/items/create">
+                <Button class={s.button}>开始记账</Button>
+              </RouterLink>
+            </div>
+          </>
         )}
         <RouterLink to="/items/create">
-          <FloatButton iconName='add' />
+          <FloatButton iconName="add" />
         </RouterLink>
       </div>
     );
