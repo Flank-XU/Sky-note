@@ -1,12 +1,12 @@
 import {
   defineComponent,
-  onMounted,
   PropType,
   reactive,
   ref,
   watch,
 } from "vue";
 import { RouterLink } from "vue-router";
+import { useAfterMe } from "../../hooks/useAfterMe";
 import { Button } from "../../shared/Button";
 import { Center } from "../../shared/Center";
 import { Datetime } from "../../shared/Datetime";
@@ -52,7 +52,7 @@ export const ItemSummary = defineComponent({
         (pager.page - 1) * pager.per_page + resources.length < pager.count;
       page.value += 1;
     };
-    onMounted(fetchItems);
+    useAfterMe(fetchItems)
 
     watch(
       () => [props.startDate, props.endDate],
@@ -86,7 +86,7 @@ export const ItemSummary = defineComponent({
       );
       Object.assign(itemsBalance, response.data);
     };
-    onMounted(fetchItemsBalance);
+    useAfterMe(fetchItemsBalance);
     watch(
       () => [props.startDate, props.endDate],
       () => {
