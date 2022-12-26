@@ -1,19 +1,18 @@
-import axios from "axios";
-import { defineComponent, PropType, reactive, ref } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useBool } from "../hooks/useBool";
 import { MainLayout } from "../layout/MainLayout";
 import { BackIcon } from "../shared/BackIcon";
 import { Button } from "../shared/Button";
 import { Form, FormItem } from "../shared/Form";
-import { history } from "../shared/history";
 import { http } from "../shared/Http";
 import { Icon } from "../shared/Icon";
-import { refershMe } from "../shared/me";
 import { hasError, validate } from "../shared/validate";
+import { useMeStore } from "../stores/useMeStore";
 import s from "./SignInPage.module.scss";
 export const SignInPage = defineComponent({
   setup: (props, context) => {
+    const meStore = useMeStore()
     const formData = reactive({
       email: "",
       code: "",
@@ -58,7 +57,7 @@ export const SignInPage = defineComponent({
         // router.push('/sign_in?return_to=' + encodeURLComponent(route.fullPath)
         // cosnt returnTo= route.queryy.return_to?.toString()
         const returnTo = route.query.return_to?.toString();
-        refershMe();
+        meStore.refreshMe()
         router.push(returnTo || "/");
       }
     };
