@@ -10,30 +10,31 @@ export const Overlay = defineComponent({
       type: Function as PropType<() => void>,
     },
   },
-  setup: (props, context) => {
-    const meStore = useMeStore()
+  setup: (props) => {
+    const meStore = useMeStore();
     const close = () => {
       props.onClose?.();
     };
     const route = useRoute();
-    const me = ref<User>()
+    const me = ref<User>();
     onMounted(async () => {
-      const response = await meStore.mePromise
-      me.value = response?.data.resource
-    })
+      const response = await meStore.mePromise;
+      me.value = response?.data.resource;
+    });
     const onSignOut = async () => {
       await Dialog.confirm({
-        title: '确认',
-        message: '你真的要退出登录吗？',
-      })
-      localStorage.removeItem('jwt')
-    }
+        title: "确认",
+        message: "你真的要退出登录吗？",
+      });
+      localStorage.removeItem("jwt");
+      window.location.reload();
+    };
     return () => (
       <>
         <div class={s.mask} onClick={close}></div>
         <div class={s.overlay}>
           <section class={s.currentUser}>
-          {me.value ? (
+            {me.value ? (
               <div>
                 <h2 class={s.email}>{me.value.email}</h2>
                 <p onClick={onSignOut}>点击这里退出登录</p>
@@ -42,11 +43,12 @@ export const Overlay = defineComponent({
               <RouterLink to={`/sign_in?return_to=${route.fullPath}`}>
                 <h2>未登录用户</h2>
                 <p>点击这里登录</p>
-            </RouterLink>)}
+              </RouterLink>
+            )}
           </section>
           <nav>
             <ul class={s.action_list}>
-            <li>
+              <li>
                 <RouterLink to="/items" class={s.action}>
                   <Icon name="savepig" class={s.icon} />
                   <span>记账</span>
@@ -78,7 +80,7 @@ export const Overlay = defineComponent({
   },
 });
 export const OverlayIcon = defineComponent({
-  setup: (props, context) => {
+  setup: () => {
     const refOverlayVisible = ref(false);
     const onClickMenu = () => {
       refOverlayVisible.value = !refOverlayVisible.value;
