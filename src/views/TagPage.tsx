@@ -10,3 +10,4 @@ export const TagPage = defineComponent({
     return () => <RouterView />;
   },
 });
+export default TagPage
