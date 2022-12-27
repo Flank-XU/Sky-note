@@ -7,6 +7,7 @@ import styleImport, { VantResolve } from 'vite-plugin-style-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:'/Sky-note/dist/',
   plugins: [
     vue(),
     svgstore(),
