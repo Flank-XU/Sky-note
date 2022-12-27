@@ -5,9 +5,10 @@ import {
   useRoute,
   useRouter,
 } from "vue-router";
-import style from "./Welcome.module.scss";
+import s from "./Welcome.module.scss";
 import { useSwipe } from "../hooks/useSwipe";
 import { throttle } from "../shared/throttle";
+type Params = { Component: VNode; route: RouteLocationNormalizedLoaded };
 export const Welcome = defineComponent({
   setup: (props, context) => {
     const main = ref<HTMLElement>();
@@ -32,29 +33,23 @@ export const Welcome = defineComponent({
       }
     });
     return () => (
-      <div class={style.wrapper}>
+      <div class={s.wrapper}>
         <header>
           <svg>
             <use xlinkHref="#icon"></use>
           </svg>
           <h1>比鲁记账本</h1>
         </header>
-        <main class={style.main} ref={main}>
+        <main class={s.main} ref={main}>
           <RouterView name="main">
-            {({
-              Component: X,
-              route: R,
-            }: {
-              Component: VNode;
-              route: RouteLocationNormalizedLoaded;
-            }) => (
+            {({ Component: comp }: Params) => (
               <Transition
-                enterFromClass={style.slide_fade_enter_from}
-                enterActiveClass={style.slide_fade_enter_active}
-                leaveToClass={style.slide_fade_leave_to}
-                leaveActiveClass={style.slide_fade_leave_active}
+                enterFromClass={s.slide_fade_enter_from}
+                enterActiveClass={s.slide_fade_enter_active}
+                leaveToClass={s.slide_fade_leave_to}
+                leaveActiveClass={s.slide_fade_leave_active}
               >
-                {X}
+                {comp}
               </Transition>
             )}
           </RouterView>
@@ -66,4 +61,4 @@ export const Welcome = defineComponent({
     );
   },
 });
-export default Welcome
+export default Welcome;
